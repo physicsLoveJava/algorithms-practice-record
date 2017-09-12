@@ -17,7 +17,19 @@ public class KingdomDivision {
             putEdge(roadMap, u, v);
             putEdge(roadMap, v, u);
         }
-        System.out.println(roadMap);
+        compute(roadMap, n);
+    }
+
+    private static void compute(Map<Integer, List<Integer>> roadMap, int n) {
+        int[] choice = new int[n];
+        for (int i = 0; i < choice.length; i++) {
+            choice[i] = -1;
+        }
+        for (Map.Entry<Integer, List<Integer>> entry : roadMap.entrySet()) {
+            Integer source = entry.getKey();
+            List<Integer> targets = entry.getValue();
+
+        }
     }
 
     private static void putEdge(Map<Integer, List<Integer>> roadMap, int u, int v) {
