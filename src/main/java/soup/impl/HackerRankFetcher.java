@@ -51,12 +51,16 @@ public class HackerRankFetcher implements UrlListFetcher {
                 Document root = Jsoup.connect(getLinkUrl(pageUrl)).get();
                 Elements pSet = root.select("#contest-challenges-problem > div > header > div > h4 > a");
                 for (Element p : pSet) {
-                    urlList.add(p.attr("href"));
+                    urlList.add(getProblemUrl(p.attr("href")));
                 }
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
+    }
+
+    private String getProblemUrl(String href) {
+        return domain + href + "/problem";
     }
 
     private String getLinkUrl(String pageUrl) {
@@ -68,6 +72,7 @@ public class HackerRankFetcher implements UrlListFetcher {
     }
 
     public List<String> fetch() {
+        System.out.println("current list: " + urlList.size());
         return urlList;
     }
 }
