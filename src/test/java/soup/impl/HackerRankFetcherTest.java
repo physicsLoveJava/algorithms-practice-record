@@ -1,8 +1,7 @@
 package soup.impl;
 
 import org.junit.Test;
-
-import static org.junit.Assert.*;
+import soup.impl.hackerrank.HackerRankFetcher;
 
 public class HackerRankFetcherTest {
 

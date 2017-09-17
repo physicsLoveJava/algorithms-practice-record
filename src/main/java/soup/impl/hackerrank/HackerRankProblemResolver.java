@@ -1,8 +1,13 @@
-package soup.impl;
+package soup.impl.hackerrank;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import soup.impl.DefaultClassGenerator;
 import soup.support.ClassBean;
 import soup.support.ClassGenerator;
 import soup.support.ProblemResolver;
+import util.ChromeUtil;
 import util.StringUtil;
 
 import java.util.regex.Matcher;
@@ -19,14 +24,19 @@ public class HackerRankProblemResolver implements ProblemResolver {
 
     private static final String packageDir = "hackerrank";
 
-    static final ClassGenerator generator = new DefaultClassGenerator();
+    private static final ClassGenerator generator = new DefaultClassGenerator();
 
     public void resolve(String url) {
         Matcher matcher = PROBLEM_REG.matcher(url);
         if(matcher.find()) {
             String problem = matcher.group(1);
             String problemDir = rootDir + problem + "/";
-            doMerge(takeScreenShot(url, problemDir),  problemDir, "complete.png");
+            doMerge(takeScreenShot(url, problemDir, new ChromeUtil.WebAction() {
+                public void invoke(WebDriver driver) {
+                    WebElement $close = driver.findElement(By.className("close"));
+                    $close.click();
+                }
+            }),  problemDir, "complete.png");
             generator.generate(constructClassBean(url, problem), true);
         }
         System.out.println("handled: " + url);

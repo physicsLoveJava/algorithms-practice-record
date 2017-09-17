@@ -1,4 +1,4 @@
-package soup.impl;
+package soup.impl.hackerrank;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
