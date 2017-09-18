@@ -2,6 +2,6 @@ package soup.support;
 
 public interface ProblemResolver {
 
-    void resolve(String url);
+    void resolve(String type, String url);
 
 }

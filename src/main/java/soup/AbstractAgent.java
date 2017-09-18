@@ -5,6 +5,10 @@ import soup.support.UrlListFetcher;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 public abstract class AbstractAgent implements Iterable<String>{
 
@@ -13,6 +17,8 @@ public abstract class AbstractAgent implements Iterable<String>{
     protected ProblemResolver resolver;
 
     protected List<String> urlList;
+
+    protected String type;
 
     protected int threadCount;
 
@@ -24,15 +30,13 @@ public abstract class AbstractAgent implements Iterable<String>{
 
     public void run() {
         int count = this.threadCount < 1 ? 4 : this.threadCount;
-        Thread[] threads = new Thread[count];
-        for (int i = 0; i < threads.length; i++) {
-            UrlWorker worker = new UrlWorker(resolver, this.iterator());
-            threads[i] = new Thread(worker);
-            threads[i].start();
+        ThreadPoolExecutor executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(count);
+        while(this.iterator().hasNext()) {
+            executor.execute(new UrlWorker(resolver, this.iterator().next()));
         }
-        for (int i = 0; i < threads.length; i++) {
+        while(executor.getTaskCount() != executor.getCompletedTaskCount()) {
             try {
-                threads[i].join();
+                Thread.sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -51,16 +55,19 @@ public abstract class AbstractAgent implements Iterable<String>{
 
         ProblemResolver resolver;
 
-        Iterator<String> iterator;
+        String url;
 
-        public UrlWorker(ProblemResolver resolver, Iterator<String> iterator) {
+        public UrlWorker(ProblemResolver resolver, String url) {
             this.resolver = resolver;
-            this.iterator = iterator;
+            this.url = url;
         }
 
         public void run() {
-            while(iterator.hasNext()) {
-                resolver.resolve(iterator.next());
+            try {
+                resolver.resolve(type, url);
+            }catch (Throwable e) {
+                e.printStackTrace();
+                System.out.println("run thread failed!");
             }
         }
     }

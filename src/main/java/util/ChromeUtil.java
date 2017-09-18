@@ -101,13 +101,15 @@ public class ChromeUtil {
             File destFile = takeScreenShot(driver, i * WINDOW_HEIGHT - SCROLL_BAR, dest + "/" + i + ".png");
             list.add(destFile.getAbsolutePath());
         }
-        try {
-            Thread.sleep(THREAD_SLEEP);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         driver.quit();
-        service.stop();
+        while (service.isRunning()) {
+            try {
+                Thread.sleep(THREAD_SLEEP);
+                service.stop();
+            }catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
         return list;
     }
 
