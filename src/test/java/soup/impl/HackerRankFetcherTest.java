@@ -7,7 +7,7 @@ public class HackerRankFetcherTest {
 
     @Test
     public void fetch() throws Exception {
-        System.out.println(new HackerRankFetcher("greedy").fetch());
+        System.out.println(new HackerRankFetcher("recursion").fetch());
     }
 
 }

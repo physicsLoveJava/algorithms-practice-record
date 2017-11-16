@@ -45,7 +45,7 @@ public class HackerRankProblemResolver implements ProblemResolver {
 
     private ClassBean constructClassBean(String url, String type, String problem) {
         ClassBean bean = new ClassBean();
-        bean.setPackageName(packageDir + File.separator + StringUtil.toClassName(type, "-"));
+        bean.setPackageName(packageDir + "." + StringUtil.toClassName(type, "-"));
         bean.setClassName(StringUtil.toClassName(problem, "-"));
         bean.setClassComment("Problem Url: " + url);
         return bean;
