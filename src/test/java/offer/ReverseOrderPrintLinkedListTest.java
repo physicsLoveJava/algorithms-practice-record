@@ -18,15 +18,11 @@ public class ReverseOrderPrintLinkedListTest {
         for (int i = size - 1; i > -1; i--) {
             nodes[i] = new LinkNode<Integer>(i, i == size - 1 ? null : nodes[i + 1]);
         }
-
-        FunctionalUtils.map(nodes, new FunctionalUtils.Callback<LinkNode>() {
-
+        PrintUtils.println(nodes, new FunctionalUtils.Callback<LinkNode<Integer>, String>() {
             @Override
-            public LinkNode each(LinkNode item, int index, LinkNode[] arr) {
-                System.out.println(item.getData());
-                return null;
+            public String each(LinkNode<Integer> item, int index, LinkNode<Integer>[] arr) {
+                return item.getData().toString();
             }
-
         });
         ReverseOrderPrintLinkedList.reverse(nodes[0]);
     }
