@@ -1,6 +1,7 @@
 package util;
 
 import com.google.common.base.Joiner;
+import util.adt.BinaryTreeNode;
 
 import static util.FunctionalUtils.map;
 
@@ -33,5 +34,9 @@ public class PrintUtils {
 
     public static <T> void println(T[] arr, FunctionalUtils.Callback<T, String> cb) {
         System.out.println(internalPrintWithCallback(arr, cb));
+    }
+
+    public static <T> void printBinaryTree(BinaryTreeNode<T> node) {
+
     }
 }
