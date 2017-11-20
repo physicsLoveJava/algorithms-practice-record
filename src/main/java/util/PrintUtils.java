@@ -3,6 +3,8 @@ package util;
 import com.google.common.base.Joiner;
 import util.adt.BinaryTreeNode;
 
+import java.util.Arrays;
+
 import static util.FunctionalUtils.map;
 
 public class PrintUtils {
@@ -38,5 +40,9 @@ public class PrintUtils {
 
     public static <T> void printBinaryTree(BinaryTreeNode<T> node) {
 
+    }
+
+    public static <E> void printArray(E[] arr) {
+        System.out.println(Arrays.toString(arr));
     }
 }
