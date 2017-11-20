@@ -5,19 +5,19 @@ import util.PrintUtils;
 
 import java.util.Comparator;
 
-public class InsertionSortTest {
+public class QuickSortTest {
 
     @Test
     public void sort() throws Exception {
-        Integer[] arr = CommonSortUtility.generateRandomArray();
-        PrintUtils.printArray(arr);
-        InsertionSort.sort(arr, new Comparator<Integer>() {
+        Integer[] array = CommonSortUtility.generateRandomArray();
+        PrintUtils.printArray(array);
+        QuickSort.sort(array, new Comparator<Integer>() {
             @Override
             public int compare(Integer o1, Integer o2) {
                 return o1.compareTo(o2);
             }
         });
-        PrintUtils.printArray(arr);
+        PrintUtils.printArray(array);
     }
 
 }

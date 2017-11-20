@@ -1,11 +1,13 @@
 package soup;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
 public class HackerRankAgentTest {
     @Test
+    @Ignore
     public void run() throws Exception {
         new HackerRankAgent("strings", 8).run();
         new HackerRankAgent("arrays-and-sorting", 8).run();

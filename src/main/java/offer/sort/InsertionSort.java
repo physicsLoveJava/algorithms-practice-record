@@ -1,5 +1,7 @@
 package offer.sort;
 
+import util.SortUtils;
+
 import java.util.Comparator;
 
 public class InsertionSort {
@@ -11,7 +13,7 @@ public class InsertionSort {
         for (int i = 1; i < arr.length; i++) {
             int j = i - 1;
             while(j >= 0 && comparator.compare(arr[j + 1], arr[j]) < 0) {
-                swap(arr, j, j + 1);
+                SortUtils.swap(arr, j, j + 1);
                 j--;
             }
         }
@@ -20,12 +22,4 @@ public class InsertionSort {
     private static <E extends Comparable> void copy(E[] arr, int source, int target) {
         arr[target] = arr[source];
     }
-
-    private static <E extends Comparable> void swap(E[] arr, int source, int target) {
-        E tmp = arr[source];
-        arr[source] = arr[target];
-        arr[target] = tmp;
-    }
-
-
 }
