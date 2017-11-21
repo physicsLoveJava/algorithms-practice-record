@@ -4,7 +4,7 @@ import java.util.Comparator;
 
 public class CountingSort {
 
-    public static <E extends Integer> void sort(E[] arr, int max, Comparator<E> comparator) {
+    public static <E extends Integer> void sort(E[] arr, int max) {
         if(arr == null || max < 1) {
             return;
         }

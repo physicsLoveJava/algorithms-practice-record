@@ -7,13 +7,12 @@ import java.util.Comparator;
 
 import static org.junit.Assert.*;
 
-public class CountingSortTest {
-
+public class RadixSortTest {
     @Test
     public void sort() throws Exception {
-        Integer[] arr = CommonSortUtility.generateRandomArray();
+        Integer[] arr = CommonSortUtility.generateRandomArray(20);
         PrintUtils.printArray(arr);
-        CountingSort.sort(arr, 10);
+        RadixSort.sort(arr, 10);
         PrintUtils.printArray(arr);
     }
 

@@ -6,6 +6,10 @@ public class CommonSortUtility {
 
     static Random random = new Random();
 
+    public static Integer[] generateRandomArray(int size) {
+        return generateRandomArray(size, size);
+    }
+
     public static Integer[] generateRandomArray() {
         return generateRandomArray(10, 10);
     }
