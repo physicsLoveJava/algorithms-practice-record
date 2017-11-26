@@ -4,6 +4,8 @@ import org.junit.Test;
 import util.adt.BinaryTreeNode;
 
 import static org.junit.Assert.*;
+import static util.CopyUtils.setLeft;
+import static util.CopyUtils.setRight;
 
 public class CheckExistsSubTreeTest {
 
@@ -29,14 +31,6 @@ public class CheckExistsSubTreeTest {
         assertTrue(CheckExistsSubTree.check(root, goodSubTree));
         assertFalse(CheckExistsSubTree.check(root, badSubTree));
 
-    }
-
-    private void setLeft(BinaryTreeNode<Integer> root, int value) {
-        root.setLeft(new BinaryTreeNode<>(value));
-    }
-
-    private void setRight(BinaryTreeNode<Integer> root, int value) {
-        root.setRight(new BinaryTreeNode<>(value));
     }
 
 }
