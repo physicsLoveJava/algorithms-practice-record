@@ -1,7 +1,5 @@
 package util;
 
-import lintcode.MaximumDepthOfBinaryTree;
-
 public class TreeUtil {
 
     public static class TreeNode {
