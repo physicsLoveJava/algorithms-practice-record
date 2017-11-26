@@ -2,6 +2,7 @@ package offer;
 
 import util.adt.LinkNode;
 
+//TODO non-recursive solution for the mergeLinkedList
 public class MergeLinkedList {
 
     public static LinkNode<Integer> merge(LinkNode<Integer> listA, LinkNode<Integer> listB) {
