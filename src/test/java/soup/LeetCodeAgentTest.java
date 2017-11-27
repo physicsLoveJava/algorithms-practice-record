@@ -9,9 +9,9 @@ import static org.junit.Assert.*;
 public class LeetCodeAgentTest {
 
     @Test
-    @Ignore
+//    @Ignore
     public void testX() {
-        new LeetCodeAgent(LeetCodeLevel.MEDIUM, 8).run();
+        new LeetCodeAgent(LeetCodeLevel.EASY, 3).run();
     }
 
 }

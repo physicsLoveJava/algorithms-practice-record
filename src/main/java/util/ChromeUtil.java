@@ -76,41 +76,50 @@ public class ChromeUtil {
         System.setProperty("webdriver.chrome.driver", path);
         ChromeDriverService service = new ChromeDriverService.Builder().usingDriverExecutable(new File(path)).usingAnyFreePort().build();
         try {
-            service.start();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        WebDriver driver = new RemoteWebDriver(service.getUrl(), DesiredCapabilities.chrome());
-        driver.get(url);
-        driver.manage().window().fullscreen();
-        driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-        if(action != null) {
-            action.invoke(driver);
-        }
-        JavascriptExecutor executor = (JavascriptExecutor) driver;
-        Long maxHeight = (Long) executor.executeScript("return document.body.scrollHeight");
-        System.out.println("height: " + maxHeight);
-        try {
-            FileUtils.forceMkdir(new File(dest));
-        } catch (IOException e) {
-            e.printStackTrace();
-            throw new IllegalStateException("failed to create directory", e);
-        }
-        List<String> list = new ArrayList<String>();
-        for (int i = 0; i < Math.ceil(maxHeight / WINDOW_HEIGHT); i++) {
-            File destFile = takeScreenShot(driver, i * WINDOW_HEIGHT - SCROLL_BAR, dest + "/" + i + ".png");
-            list.add(destFile.getAbsolutePath());
-        }
-        driver.quit();
-        while (service.isRunning()) {
             try {
-                Thread.sleep(THREAD_SLEEP);
-                service.stop();
-            }catch (Exception e) {
+                service.start();
+            } catch (IOException e) {
                 e.printStackTrace();
             }
+            WebDriver driver = new RemoteWebDriver(service.getUrl(), DesiredCapabilities.chrome());
+            driver.get(url);
+//            driver.manage().window().fullscreen();
+            driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+            if(action != null) {
+                action.invoke(driver);
+            }
+            JavascriptExecutor executor = (JavascriptExecutor) driver;
+            Long maxHeight = (Long) executor.executeScript("return document.body.scrollHeight");
+            System.out.println("height: " + maxHeight);
+            try {
+                FileUtils.forceMkdir(new File(dest));
+            } catch (IOException e) {
+                e.printStackTrace();
+                throw new IllegalStateException("failed to create directory", e);
+            }
+            List<String> list = new ArrayList<String>();
+            for (int i = 0; i < Math.ceil(maxHeight / WINDOW_HEIGHT); i++) {
+                File destFile = takeScreenShot(driver, i * WINDOW_HEIGHT - SCROLL_BAR, dest + "/" + i + ".png");
+                list.add(destFile.getAbsolutePath());
+            }
+            driver.quit();
+            while (service.isRunning()) {
+                try {
+                    Thread.sleep(THREAD_SLEEP);
+                    service.stop();
+                }catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+            return list;
+        }catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if(service.isRunning()) {
+                service.stop();
+            }
         }
-        return list;
+        return null;
     }
 
     public static List<String> takeScreenShot(String url, String dest) {
