@@ -5,6 +5,8 @@ import org.apache.commons.lang3.ArrayUtils;
 import java.util.Map;
 import java.util.TreeMap;
 
+import static util.SortUtils.partition;
+
 public class FindOccurrenceInArray {
 
     //TODO
@@ -58,31 +60,6 @@ public class FindOccurrenceInArray {
             }
         }
         return cnt >= array.length >> 1;
-    }
-
-    private static int partition(int[] array, int start, int end) {
-        if(start > end) {
-            return -1;
-        }
-        if(start == end) {
-            return start;
-        }
-        int left = start;
-        int right = end;
-        int pivot = array[start];
-        while(left < right) {
-            while(array[right] > pivot && left < right) {
-                right--;
-            }
-            while(array[left] < pivot && left < right) {
-                left++;
-            }
-            if(left < right) {
-                ArrayUtils.swap(array, left++, right--);
-            }
-        }
-        ArrayUtils.swap(array, left, start);
-        return left;
     }
 
     public static int find(int[] array) {
