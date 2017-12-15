@@ -12,6 +12,7 @@ public class ThreeColorFlag {
         char[] chars = str.toCharArray();
         int blue = 0, white = 0, red = chars.length - 1;
         while(white <= red) {
+            System.out.println(chars);
             if(isBlue(chars[white])) {
                 if(blue == white) {
                     blue ++;white++;
@@ -19,6 +20,9 @@ public class ThreeColorFlag {
                     ArrayUtils.swap(chars, blue++, white++);
                 }
             }else if(isRed(chars[white])) {
+                while(white <= red && isRed(chars[red])) {
+                    red--;
+                }
                 ArrayUtils.swap(chars, red--, white);
             }else {
                 white++;

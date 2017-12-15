@@ -14,8 +14,11 @@ public class ThreeColorFlagTest {
         assertEquals("BBBBWR", ThreeColorFlag.move("RWBBBB"));
 
         assertEquals("BBBBWWWWR", ThreeColorFlag.move("RWWWWBBBB"));
-        assertEquals("BBBBWWWWRRRR", ThreeColorFlag.move("RRRRWWWWBBBB"));
+    }
 
+    @Test
+    public void move2() {
+        assertEquals("BBBBWWWWRRRR", ThreeColorFlag.move("RRRRWWWWBBBB"));
     }
 
 }
