@@ -9,6 +9,30 @@ public class MazeOne {
         visit(maze, size, startX, startY, endX, endY);
     }
 
+    public static void solve2(int[][] maze, int size, int startX, int startY, int endX, int endY) {
+        printMaze(maze, size);
+        visit2(maze, size, startX, startY, endX, endY);
+    }
+
+    private static void visit2(int[][] maze, int size, int startX, int startY, int endX, int endY) {
+        maze[startX][startY] = 1;
+        if(startX == endX && startY == endY) {
+            printMaze(maze, size);
+        }
+        walkIfPossible2(maze, size, startX, startY + 1, endX, endY);
+        walkIfPossible2(maze, size, startX + 1, startY, endX, endY);
+        walkIfPossible2(maze, size, startX, startY - 1, endX, endY);
+        walkIfPossible2(maze, size, startX - 1, startY, endX, endY);
+        maze[startX][startY] = 0;
+    }
+
+    private static void walkIfPossible2(int[][] maze, int size, int startX, int startY, int endX, int endY) {
+        if(canWalk(maze[startX][startY])) {
+            visit2(maze, size, startX, startY, endX, endY);
+        }
+    }
+
+
     private static void visit(int[][] maze, int size, int startX, int startY, int endX, int endY) {
         if (!visit(maze, startX, startY, endX, endY)) {
             System.out.println("can't find a path in the maze");

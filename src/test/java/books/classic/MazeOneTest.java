@@ -43,6 +43,23 @@ public class MazeOneTest {
         MazeOne.solve(maze, 7, startX, startY, endX, endY);
     }
 
+    @Test
+    public void solve3() throws Exception {
+        int[][] maze = {
+                {2, 2, 2, 2, 2, 2, 2},
+                {2, 0, 0, 0, 0, 0, 2},
+                {2, 0, 2, 0, 0, 0, 2},
+                {2, 0, 0, 2, 0, 2, 2},
+                {2, 2, 0, 2, 0, 2, 2},
+                {2, 0, 0, 0, 0, 0, 2},
+                {2, 2, 2, 2, 2, 2, 2},
+        };
+        int startX = 1;
+        int startY = 1;
+        int endX = 5;
+        int endY = 5;
 
+        MazeOne.solve2(maze, 7, startX, startY, endX, endY);
+    }
 
 }
