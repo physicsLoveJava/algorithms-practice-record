@@ -10,6 +10,7 @@ public class MazeOne {
     }
 
     public static void solve2(int[][] maze, int size, int startX, int startY, int endX, int endY) {
+        success = false;
         printMaze(maze, size);
         visit2(maze, size, startX, startY, endX, endY);
     }
@@ -34,6 +35,7 @@ public class MazeOne {
 
 
     private static void visit(int[][] maze, int size, int startX, int startY, int endX, int endY) {
+        success = false;
         if (!visit(maze, startX, startY, endX, endY)) {
             System.out.println("can't find a path in the maze");
         }else {
