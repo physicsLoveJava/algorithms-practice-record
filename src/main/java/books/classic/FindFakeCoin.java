@@ -22,4 +22,15 @@ public class FindFakeCoin {
         }
     }
 
+    public static int findWithWieght(int[] coins) {
+        int idx = find(coins);
+        int nIdx = idx + 1 % coins.length;
+        if(coins[nIdx] > coins[idx]) {
+            System.out.println("比真币轻");
+        }else {
+            System.out.println("比真币重");
+        }
+        return idx;
+    }
+
 }

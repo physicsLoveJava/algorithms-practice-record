@@ -19,4 +19,10 @@ public class FindFakeCoinTest {
 
     }
 
+    @Test
+    public void findWithWeight() {
+        assertEquals(0, FindFakeCoin.findWithWieght(new int[] {0, 1, 1, 1, 1, 1, 1, 1}));
+        assertEquals(0, FindFakeCoin.findWithWieght(new int[] {2, 1, 1, 1, 1, 1, 1, 1}));
+    }
+
 }
