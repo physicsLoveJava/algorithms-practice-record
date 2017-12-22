@@ -45,4 +45,26 @@ public class PrintUtils {
     public static <E> void printArray(E[] arr) {
         System.out.println(Arrays.toString(arr));
     }
+
+    public static void printMatrix(int[][] val, int rows, int cols) {
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                System.out.printf("%d, ", val[i][j]);
+            }
+            System.out.println();
+        }
+    }
+
+    public static void printMatrix(int[][] val) {
+        if(val == null) {
+            return;
+        }
+        for (int i = 0; i < val.length; i++) {
+            for (int j = 0; j < val[i].length; j++) {
+                System.out.printf("%d, ", val[i][j]);
+            }
+            System.out.println();
+        }
+    }
+
 }
