@@ -1,34 +1,34 @@
 package types.dp;
 
-public class StaircaseWalk3 {
+public class StaircaseWalk4 {
 
     public static int[] walk(int[][] matrix, int rows, int cols) {
         if(matrix == null || rows < 1 || cols < 1) {
             return null;
         }
         int[] p = new int[rows + cols - 1];
-        int[][] val = new int[rows][cols];
+        int[][] val = new int[rows + 1][cols + 1];
 
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < cols; j++) {
-                if(i > 0 && j > 0) {
-                    val[i][j] += Math.min(val[i][j - 1], val[i - 1][j]);
-                }else if(i == 0 && j > 0) {
+        for (int i = 1; i <= rows; i++) {
+            for (int j = 1; j <= cols; j++) {
+                if(i == 1 && j != 1) {
                     val[i][j] += val[i][j - 1];
-                }else if(i > 0) {
+                }else if(j == 1 && i != 1) {
                     val[i][j] += val[i - 1][j];
+                }else if(i != 1) {
+                    val[i][j] += Math.min(val[i][j - 1], val[i - 1][j]);
                 }
-                val[i][j] += matrix[i][j];
+                val[i][j] += matrix[i - 1][j - 1];
             }
         }
 
         int k = rows + cols - 2;
-        int i = rows - 1;
-        int j = cols - 1;
+        int i = rows;
+        int j = cols;
         while(k >= 0) {
             p[k--] = val[i][j];
             if(j > 0 && i > 0) {
-                int prev = val[i][j] - matrix[i][j];
+                int prev = val[i][j] - matrix[i - 1][j - 1];
                 if(prev == val[i][j - 1]) {
                     j--;
                 }else {
