@@ -1,8 +1,5 @@
 package types.dp;
 
-import org.apache.commons.lang3.ArrayUtils;
-import util.PrintUtils;
-
 public class LongestIncreasingSubsequence {
 
     public static int find(int[] seq) {
