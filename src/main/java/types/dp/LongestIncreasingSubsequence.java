@@ -13,6 +13,7 @@ public class LongestIncreasingSubsequence {
         for (int i = 0; i < seq.length; i++) {
             for (int j = i + 1; j < seq.length; j++) {
                 if(seq[i] < seq[j]) {
+                    //如果seq[i]在子队列中，则更新res[i]
                     res[i] = Math.max(res[j], res[i] + 1);
                 }
             }
