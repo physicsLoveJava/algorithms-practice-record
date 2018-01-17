@@ -25,8 +25,8 @@ public class DeleteAndEarn1 {
                     pick = i * count[i] + unpick;
                     unpick = cur;
                 }
+                prev = i;
             }
-            prev = i;
         }
         return Math.max(pick, unpick);
     }
