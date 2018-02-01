@@ -12,6 +12,7 @@ public class LongMonotoneSubSequenceTest {
         assertEquals(3, LongMonotoneSubSequence.find("567"));
         assertEquals(6, LongMonotoneSubSequence.find("13243567"));
         assertEquals(4, LongMonotoneSubSequence.find("243167"));
+        assertEquals(4, LongMonotoneSubSequence.find("2431675"));
 
     }
 
