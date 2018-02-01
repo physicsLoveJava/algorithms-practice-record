@@ -16,4 +16,15 @@ public class LongMonotoneSubSequenceTest {
 
     }
 
+    @Test
+    public void findWithSeq() throws Exception {
+
+        assertEquals("3", LongMonotoneSubSequence.findWithSeq("321"));
+        assertEquals("567", LongMonotoneSubSequence.findWithSeq("567"));
+        assertEquals("123567", LongMonotoneSubSequence.findWithSeq("13243567"));
+        assertEquals("2367", LongMonotoneSubSequence.findWithSeq("243167"));
+        assertEquals("2367", LongMonotoneSubSequence.findWithSeq("2431675"));
+
+    }
+
 }
