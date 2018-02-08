@@ -1,7 +1,5 @@
 package types.dp;
 
-import util.PrintUtils;
-
 public class ZeroOneKnapsack {
 
     static int size = 10;
@@ -20,8 +18,8 @@ public class ZeroOneKnapsack {
         }
         dp = new int[size][size];
         int findx = findx(prices, weights, limit, prices.length - 1);
-//        PrintUtils.printMatrix(dp, 3);
-//        System.out.println();
+        //        PrintUtils.printMatrix(dp, 3);
+        //        System.out.println();
         return findx;
     }
 
