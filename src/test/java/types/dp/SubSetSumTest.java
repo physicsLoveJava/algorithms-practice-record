@@ -8,11 +8,25 @@ public class SubSetSumTest {
     @Test
     public void find() throws Exception {
 
-        System.out.println(SubSetSum.find(
+        assertTrue(SubSetSum.find(
                 new int[]{
                         1, 2, 3, 4, 1, 2, 3, 4
                 },
-                20
+                1
+        ));
+
+        assertTrue(SubSetSum.find(
+                new int[]{
+                        1, 2, 3, 4, 1, 2, 3, 4
+                },
+                7
+        ));
+
+        assertFalse(SubSetSum.find(
+                new int[]{
+                        1, 2, 3, 4, 1, 2, 3, 4
+                },
+                25
         ));
 
     }

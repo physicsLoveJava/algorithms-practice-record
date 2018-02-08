@@ -6,12 +6,12 @@ public class SubSetSum {
 
     static int[][] dp;
 
-    public static int find(int[] array, int sum) {
+    public static boolean find(int[] array, int sum) {
         dp = new int[array.length][sum + 1];
         int findx = findx(array, array.length - 1, sum);
         PrintUtils.printMatrix(dp, 2);
         printPath(array, sum, dp);
-        return findx;
+        return findx == sum;
     }
 
     private static void printPath(int[] array, int sum, int[][] dp) {
