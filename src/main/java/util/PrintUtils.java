@@ -75,4 +75,24 @@ public class PrintUtils {
         }
     }
 
+    public static void print3D(int[][][] val, int deg) {
+        if(val == null) {
+            return;
+        }
+        for (int i = 0; i < val.length; i++) {
+            for (int j = 0; j < val[i].length; j++) {
+                System.out.printf("i = %d, j = %d\n", i, j);
+                for (int k = 0; k < val[i][j].length; k++) {
+                    if(deg > 0) {
+                        System.out.printf("%" + deg + "d, ", val[i][j][k]);
+                    }else {
+                        System.out.printf("%d, ", val[i][j][k]);
+                    }
+                }
+                System.out.println();
+            }
+            System.out.println();
+        }
+    }
+
 }
