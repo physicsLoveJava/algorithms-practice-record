@@ -1,5 +1,9 @@
 package types.dp;
 
+import util.PrintUtils;
+
+import java.util.Arrays;
+
 public class LIS {
 
     public static int find(int[] array) {
@@ -21,6 +25,7 @@ public class LIS {
                 max = dp[i];
             }
         }
+        System.out.println(Arrays.toString(dp));
         return max;
     }
 
