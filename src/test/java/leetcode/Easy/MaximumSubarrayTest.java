@@ -5,8 +5,15 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class MaximumSubarrayTest {
+
     @Test
     public void maxSubArray() throws Exception {
+
+        assertEquals(0, MaximumSubarray.maxSubArray(
+                new int[] {
+
+                }
+        ));
 
         assertEquals(6, MaximumSubarray.maxSubArray(
                 new int[] {
