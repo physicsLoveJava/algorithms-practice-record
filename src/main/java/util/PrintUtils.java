@@ -59,6 +59,10 @@ public class PrintUtils {
         printMatrix(val, 0);
     }
 
+    public static void printMatrix(boolean[][] val) {
+        printMatrix(val, 0);
+    }
+
     public static void printMatrix(int[][] val, int deg) {
         if(val == null) {
             return;
@@ -69,6 +73,22 @@ public class PrintUtils {
                     System.out.printf("%" + deg + "d, ", val[i][j]);
                 }else {
                     System.out.printf("%d, ", val[i][j]);
+                }
+            }
+            System.out.println();
+        }
+    }
+
+    public static void printMatrix(boolean[][] val, int deg) {
+        if(val == null) {
+            return;
+        }
+        for (int i = 0; i < val.length; i++) {
+            for (int j = 0; j < val[i].length; j++) {
+                if(deg > 0) {
+                    System.out.printf("%" + deg + "b, ", val[i][j]);
+                }else {
+                    System.out.printf("%b, ", val[i][j]);
                 }
             }
             System.out.println();
