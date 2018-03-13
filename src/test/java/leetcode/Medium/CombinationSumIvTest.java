@@ -23,6 +23,11 @@ public class CombinationSumIvTest {
                 2
         ));
 
+//        assertEquals(2, new CombinationSumIv().combinationSum4(
+//                new int[] {4, 2, 1},
+//                32
+//        ));
+
     }
 
 }
