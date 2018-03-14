@@ -1,7 +1,5 @@
 package offer.sort;
 
-import java.util.Comparator;
-
 public class CountingSort {
 
     public static <E extends Integer> void sort(E[] arr, int max) {
