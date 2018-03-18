@@ -1,6 +1,6 @@
 package util.adt;
 
-public class LinkNode<E> {
+public class LinkNode<E extends Comparable> {
 
     E data;
 
