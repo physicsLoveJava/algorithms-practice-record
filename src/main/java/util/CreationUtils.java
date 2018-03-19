@@ -29,4 +29,17 @@ public class CreationUtils {
         }
         return nodes[0];
     }
+
+    public static LinkNode<Integer> circularLinkedList(int start, int end) {
+        if(end < start) {
+            return null;
+        }
+        int gap = end - start;
+        LinkNode[] nodes = new LinkNode[gap];
+        for (int i = end - 1; i >= start; i--) {
+            nodes[i - start] = new LinkNode(i, i == end - 1 ? null : nodes[i - start + 1]);
+        }
+        nodes[gap - 1].setNext(nodes[0]);
+        return nodes[0];
+    }
 }
