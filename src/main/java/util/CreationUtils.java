@@ -55,4 +55,15 @@ public class CreationUtils {
         nodes[gap - 1].setNext(nodes[0]);
         return nodes[0];
     }
+
+    public static ListNode listNode(int[] arr) {
+        ListNode[] rs = new ListNode[arr.length];
+        for (int i = arr.length - 1; i >= 0; i--) {
+            rs[i] = new ListNode(arr[i]);
+            if(i != arr.length - 1) {
+                rs[i].next = rs[i + 1];
+            }
+        }
+        return rs[0];
+    }
 }
