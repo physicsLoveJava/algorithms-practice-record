@@ -69,7 +69,7 @@ public class LinkNodeRandom<E extends Comparable> {
     @Override
     public String toString() {
         return "LinkNodeRandom{" +
-                "data=" + data +
+                "val=" + data +
                 ", next=" + next +
                 ", random=" + (random == null ? "null" : random.getData()) +
                 '}';

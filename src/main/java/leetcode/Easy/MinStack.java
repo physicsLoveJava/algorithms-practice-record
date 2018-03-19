@@ -10,7 +10,7 @@ public class MinStack {
     private Stack<Integer> stack = new Stack<>();
     private Stack<Integer> min = new Stack<>();
 
-        /** initialize your data structure here. */
+        /** initialize your val structure here. */
         public MinStack() {
 
         }

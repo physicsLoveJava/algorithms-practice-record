@@ -1,10 +1,8 @@
 package offer;
 
 import org.junit.Test;
-import util.CreationUtils;
-import util.adt.LinkNode;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 import static util.CreationUtils.linkedList;
 
 public class MergeLinkedListTest {
@@ -16,14 +14,14 @@ public class MergeLinkedListTest {
     @Test
     public void merge2() throws Exception{
         System.out.println(MergeLinkedList.merge(linkedList(1, 5), linkedList(3, 7)));
-        assertEquals("LinkNode{data=1, " +
-                        "next=LinkNode{data=2, " +
-                        "next=LinkNode{data=3, " +
-                        "next=LinkNode{data=3, " +
-                        "next=LinkNode{data=4, " +
-                        "next=LinkNode{data=4, " +
-                        "next=LinkNode{data=5, " +
-                        "next=LinkNode{data=6, " +
+        assertEquals("LinkNode{val=1, " +
+                        "next=LinkNode{val=2, " +
+                        "next=LinkNode{val=3, " +
+                        "next=LinkNode{val=3, " +
+                        "next=LinkNode{val=4, " +
+                        "next=LinkNode{val=4, " +
+                        "next=LinkNode{val=5, " +
+                        "next=LinkNode{val=6, " +
                         "next=null}}}}}}}}",
                 MergeLinkedList.merge(linkedList(1, 5), linkedList(3, 7)).toString());
     }

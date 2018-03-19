@@ -48,7 +48,7 @@ public class LinkNode<E extends Comparable> {
     @Override
     public String toString() {
         return "LinkNode{" +
-                "data=" + data +
+                "val=" + data +
                 ", next=" + next +
                 '}';
     }

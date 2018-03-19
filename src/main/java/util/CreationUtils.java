@@ -16,7 +16,7 @@ public class CreationUtils {
         return nodes[0];
     }
 
-    public static ListNode<Integer> linkedListForListNode(int start, int end) {
+    public static ListNode linkedListForListNode(int start, int end) {
         if(end < start) {
             return null;
         }

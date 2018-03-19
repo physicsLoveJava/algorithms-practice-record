@@ -42,7 +42,7 @@ public class ComplexNode<T> {
     @Override
     public String toString() {
         return "ComplexNode{" +
-                "data=" + data +
+                "val=" + data +
                 ", next=" + next +
                 ", sibling=" + (sibling != null ? sibling.getData() : null) +
                 '}';

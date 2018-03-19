@@ -13,7 +13,7 @@ public class ImplementStackUsingQueues {
         private Queue<Integer> queue = new ArrayDeque<>();
         private Queue<Integer> back = new ArrayDeque<>();
 
-        /** Initialize your data structure here. */
+        /** Initialize your val structure here. */
         public MyStack() {
 
         }

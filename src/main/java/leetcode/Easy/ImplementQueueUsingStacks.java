@@ -10,7 +10,7 @@ public class ImplementQueueUsingStacks {
     public static class MyQueue{
         private Stack<Integer> stack = new Stack<>();
         private Stack<Integer> back = new Stack<>();
-        /** Initialize your data structure here. */
+        /** Initialize your val structure here. */
         public MyQueue() {
 
         }
