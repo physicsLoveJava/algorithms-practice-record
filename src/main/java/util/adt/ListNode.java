@@ -2,15 +2,15 @@ package util.adt;
 
 public class ListNode {
 
-    public Integer val;
+    public int val;
 
     public ListNode next;
 
-    public ListNode(Integer val) {
+    public ListNode(int val) {
         this.val = val;
     }
 
-    public ListNode(Integer val, ListNode next) {
+    public ListNode(int val, ListNode next) {
         this.val = val;
         this.next = next;
     }
@@ -20,15 +20,15 @@ public class ListNode {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        ListNode linkNode = (ListNode) o;
+        ListNode listNode = (ListNode) o;
 
-        if (val != null ? !val.equals(linkNode.val) : linkNode.val != null) return false;
-        return next != null ? next.equals(linkNode.next) : linkNode.next == null;
+        if (val != listNode.val) return false;
+        return next != null ? next.equals(listNode.next) : listNode.next == null;
     }
 
     @Override
     public int hashCode() {
-        int result = val != null ? val.hashCode() : 0;
+        int result = val;
         result = 31 * result + (next != null ? next.hashCode() : 0);
         return result;
     }
