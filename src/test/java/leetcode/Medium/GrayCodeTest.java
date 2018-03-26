@@ -10,4 +10,9 @@ public class GrayCodeTest {
 
     }
 
+    @Test
+    public void grayCodeMethod() {
+        System.out.println(15 ^ 15 >> 1);
+    }
+
 }
