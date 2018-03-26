@@ -23,7 +23,7 @@ public class PermutationsIi {
             return;
         }
         for (int i = 0; i < nums.length; i++) {
-            if(visited[i] || i > 0 && nums[i] == nums[i - 1] && !visited[i - 1]) {
+            if(visited[i] || i > 0 && nums[i] == nums[i - 1] && !visited[i - 1]) {//!visited[i - 1] --> if first 1 is used, then second 1 not need to use
                 continue;
             }
             visited[i] = true;
