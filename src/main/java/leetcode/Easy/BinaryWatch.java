@@ -27,28 +27,10 @@ public class BinaryWatch {
         List<String> list = new ArrayList<>();
         for (Integer hBit : hBits) {
             for (Integer lBit : lBits) {
-                list.add(toWatchString(hBit, lBit));
+                list.add(String.format("%d:%02d", hBit, lBit));
             }
         }
         return list;
-    }
-
-    private String toWatchString(Integer hBit, Integer lBit) {
-        String h = null;
-        if(hBit == 0) {
-            h = "0";
-        }else {
-            h = hBit + "";
-        }
-        String l = null;
-        if(lBit == 0) {
-            l = "00";
-        }else if(lBit < 10) {
-            l = "0" + lBit;
-        }else {
-            l = lBit + "";
-        }
-        return h + ":" + l;
     }
 
     static int[] hArr = new int[] {
