@@ -3,6 +3,8 @@ package leetcode.Easy;
 import org.junit.Test;
 import util.adt.TreeNode;
 
+import static util.TreeUtil.ofTree;
+
 public class AverageOfLevelsInBinaryTreeTest {
     @Test
     public void averageOfLevels() throws Exception {
@@ -15,23 +17,6 @@ public class AverageOfLevelsInBinaryTreeTest {
 
         System.out.println(new AverageOfLevelsInBinaryTree().averageOfLevels(root));
 
-    }
-
-    TreeNode ofTree(int val) {
-        return new TreeNode(val);
-    }
-
-    TreeNode ofTree(int val, TreeNode left) {
-        TreeNode node = ofTree(val);
-        node.left = left;
-        return node;
-    }
-
-    TreeNode ofTree(int val, TreeNode left, TreeNode right) {
-        TreeNode node = ofTree(val);
-        node.left = left;
-        node.right = right;
-        return node;
     }
 
 }

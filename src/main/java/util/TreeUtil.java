@@ -16,4 +16,21 @@ public class TreeUtil {
         return new TreeNode(val);
     }
 
+    public static util.adt.TreeNode ofTree(int val) {
+        return new util.adt.TreeNode(val);
+    }
+
+    public static util.adt.TreeNode ofTree(int val, util.adt.TreeNode left) {
+        util.adt.TreeNode node = ofTree(val);
+        node.left = left;
+        return node;
+    }
+
+    public static util.adt.TreeNode ofTree(int val, util.adt.TreeNode left, util.adt.TreeNode right) {
+        util.adt.TreeNode node = ofTree(val);
+        node.left = left;
+        node.right = right;
+        return node;
+    }
+
 }
