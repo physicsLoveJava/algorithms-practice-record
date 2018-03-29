@@ -10,62 +10,37 @@ import java.util.List;
 public class LargestDivisibleSubset {
 
     public List<Integer> largestDivisibleSubset(int[] nums) {
-        if(nums == null || nums.length == 0) {
+        if (nums == null || nums.length == 0) {
             return new ArrayList<>();
         }
         Arrays.sort(nums);
-        int[][] dp = new int[nums.length][nums.length];
-        int max = 0, maxIdx = 0;
+        int[] dp = new int[nums.length];
+        int[] prev = new int[nums.length];
+        int max = 0, maxIdx = -1;
         for (int i = 0; i < nums.length; i++) {
-            for (int j = i; j < nums.length; j++) {
-                if(max < compute(nums, dp, i, j)) {
-                    max = compute(nums, dp, i, j);
-                    maxIdx = j;
+            dp[i] = 1;
+            prev[i] = -1;
+            for (int j = i - 1; j >= 0; j --) {
+                if(nums[i] % nums[j] == 0) {
+                    if(dp[i] < dp[j] + 1) {
+                        dp[i] = dp[j] + 1;
+                        prev[i] = j;
+                    }
                 }
             }
-        }
-        for (int[] sub : dp) {
-            System.out.println(Arrays.toString(sub));
+            if(dp[i] > max) {
+                max = dp[i];
+                maxIdx = i;
+            }
         }
         List<Integer> rs = new ArrayList<>();
-        int[] arr = new int[max];
-        int idx = 0;
-        int val = max;
-        int i = maxIdx;
-        while(i >= 0 && val >= 1) {
-            if(dp[0][i] == val && nums[maxIdx] % nums[i] == 0) {
-                arr[idx++] = nums[i];
-                val--;
-            }
-            i--;
-        }
-        for (int j = max - 1; j >= 0; j--) {
-            rs.add(arr[j]);
+        int idx = maxIdx;
+        while(idx != -1) {
+            rs.add(nums[idx]);
+            idx = prev[idx];
         }
         return rs;
     }
 
-    private int compute(int[] nums, int[][] dp, int s, int e) {
-        if(s > dp.length - 1 || e < 0) {
-            return 0;
-        }
-        if(dp[s][e] != 0) {
-            return dp[s][e];
-        }
-        if(e == s) {
-            return dp[s][e] = 1;
-        }
-        int count = 1;
-        for (int i = s; i < e; i++) {
-            int tmp = 0;
-            if(nums[e] % nums[i] == 0) {
-                tmp = compute(nums, dp, s, i) + 1;
-            }
-            if(tmp > count) {
-                count = tmp;
-            }
-        }
-        return dp[s][e] = count;
-    }
-
+        
 }
