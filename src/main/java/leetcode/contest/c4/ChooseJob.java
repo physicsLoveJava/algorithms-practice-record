@@ -1,4 +1,4 @@
-package leetcode.contest.ch4;
+package leetcode.contest.c4;
 
 import java.util.Map;
 import java.util.PriorityQueue;
