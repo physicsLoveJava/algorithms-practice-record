@@ -1,7 +1,5 @@
 package leetcode.Medium;
 
-import util.adt.LinkNode;
-
 /**
  * Problem Url: https://leetcode.com/problems/convert-sorted-list-to-binary-search-tree
  */
@@ -28,7 +26,7 @@ public class ConvertSortedListToBinarySearchTree {
 
         @Override
         public String toString() {
-            return "TreeNode{" +
+            return "TreeNodeX{" +
                     "val=" + val +
                     ", left=" + left +
                     ", right=" + right +

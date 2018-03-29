@@ -1,7 +1,7 @@
 package lintcode;
 
-import util.TreeUtil;
-import util.TreeUtil.TreeNode;
+
+import util.adt.TreeNode;
 
 /**
  * problem url: http://www.lintcode.com/zh-cn/problem/maximum-depth-of-binary-tree/?rand=true

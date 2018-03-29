@@ -3,7 +3,7 @@ package lintcode;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import util.TreeUtil.TreeNode;
+import util.adt.TreeNode;
 
 import static util.TreeUtil.createNode;
 

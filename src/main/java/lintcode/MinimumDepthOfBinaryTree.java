@@ -1,6 +1,6 @@
 package lintcode;
 
-import util.TreeUtil.TreeNode;
+import util.adt.TreeNode;
 
 /**
  * problem url: http://www.lintcode.com/zh-cn/problem/minimum-depth-of-binary-tree/

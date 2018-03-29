@@ -1,6 +1,7 @@
 package lintcode;
 
-import util.TreeUtil.TreeNode;
+
+import util.adt.TreeNode;
 
 import static util.TreeUtil.createNode;
 

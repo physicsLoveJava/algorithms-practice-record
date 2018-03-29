@@ -2,10 +2,9 @@ package lintcode;
 
 import org.junit.Before;
 import org.junit.Test;
-import util.TreeUtil;
-import util.TreeUtil.TreeNode;
+import util.adt.TreeNode;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 import static util.TreeUtil.createNode;
 
 public class MinimumDepthOfBinaryTreeTest {

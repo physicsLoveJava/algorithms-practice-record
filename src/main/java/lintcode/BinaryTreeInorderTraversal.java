@@ -1,6 +1,6 @@
 package lintcode;
 
-import util.TreeUtil.TreeNode;
+import util.adt.TreeNode;
 
 import java.util.ArrayList;
 import java.util.List;
