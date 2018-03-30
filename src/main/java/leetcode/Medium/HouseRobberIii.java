@@ -18,7 +18,7 @@ public class HouseRobberIii {
         if(root.right != null) {
             val += rob(root.right.left) + rob(root.right.right);
         }
-        return Math.max(val, root.val + rob(root.left) + rob(root.right));
+        return Math.max(root.val + val, rob(root.left) + rob(root.right));
     }
 
 }
