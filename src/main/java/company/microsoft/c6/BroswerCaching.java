@@ -11,7 +11,7 @@ public class BroswerCaching {
         int size;
 
         public CacheStorage(int m) {
-            super();
+            super(m, 0.75f, true);
             this.size = m;
         }
 
