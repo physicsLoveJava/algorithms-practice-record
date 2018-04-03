@@ -1,4 +1,4 @@
-package company.netease;
+package company.netease.c1;
 
 import java.util.HashMap;
 import java.util.Map;
