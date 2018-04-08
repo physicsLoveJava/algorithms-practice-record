@@ -1,9 +1,9 @@
 package util;
 
+import util.adt.TreeLinkNode;
 import util.adt.TreeNode;
 
 import java.util.ArrayDeque;
-import java.util.Stack;
 
 public class TreeUtil {
 
@@ -29,46 +29,75 @@ public class TreeUtil {
     }
 
     public static TreeNode fromList(Integer[] arr) {
-        TreeNode root = ofTree(arr[0]);
         ArrayDeque<TreeNode> queue = new ArrayDeque<>();
-        queue.add(root);
-        for (int i = 1; i < arr.length; i++) {
-            queue.add(ofTree(arr[i]));
+        int len = arr.length;
+        int h = findHeight(len);
+        for (Integer nv : arr) {
+            queue.add(ofTree(nv));
         }
-        int level = 1;
-        int count = 1;
-        while(!queue.isEmpty()) {
-            if(Math.pow(2, level) > count) {
-                TreeNode[] parentList = new TreeNode[(int) Math.pow(2, level - 1)];
-                boolean parentNotNull = false;
-                for (int i = 0; i < level && !queue.isEmpty(); i++) {
-                    parentList[i] = queue.poll();
-                    if(parentList[i] != null) {
-                        parentNotNull = true;
+        ArrayDeque<TreeNode> parent = new ArrayDeque<>();
+        TreeNode root = queue.poll();
+        parent.add(root);
+        for (int j = 0; j < h; j++) {
+            int amount = (int) Math.pow(2, j + 1);
+            ArrayDeque<TreeNode> level = new ArrayDeque<>();
+            while(amount-- > 0 && !queue.isEmpty()) {
+                level.add(queue.poll());
+            }
+            for (int i = 0; i < j + 1; i++) {
+                TreeNode parentNode = parent.poll();
+                for (int k = 0; k < 2 && !level.isEmpty(); k++) {
+                    TreeNode node = level.poll();
+                    if(k == 0) {
+                        parentNode.left = node;
+                    }else {
+                        parentNode.right = node;
                     }
+                    parent.add(node);
                 }
-                Stack<TreeNode> childQueue = new Stack<>();
-                for (int i = 0; i < level; i++) {
-                    TreeNode parent = parentList[i];
-                    TreeNode[] child = new TreeNode[2];
-                    for (int j = 0; j < 2 && !queue.isEmpty(); j++) {
-                        child[j] = queue.poll();
-                        childQueue.add(child[j]);
-                        count++;
-                    }
-                    if(parent == null) {
-                        continue;
-                    }
-                    parent.left = child[0];
-                    parent.right = child[1];
-                }
-                while (parentNotNull && !childQueue.isEmpty()) {
-                    queue.addFirst(childQueue.pop());
-                }
-                level++;
             }
         }
         return root;
+    }
+
+    public static TreeLinkNode fromListToLinkNode(Integer[] arr) {
+        ArrayDeque<TreeLinkNode> queue = new ArrayDeque<>();
+        int len = arr.length;
+        int h = findHeight(len);
+        for (Integer nv : arr) {
+            queue.add(new TreeLinkNode(nv));
+        }
+        ArrayDeque<TreeLinkNode> parent = new ArrayDeque<>();
+        TreeLinkNode root = queue.poll();
+        parent.add(root);
+        for (int j = 0; j < h; j++) {
+            int amount = (int) Math.pow(2, j + 1);
+            ArrayDeque<TreeLinkNode> level = new ArrayDeque<>();
+            while(amount-- > 0 && !queue.isEmpty()) {
+                level.add(queue.poll());
+            }
+            for (int i = 0; i < j + 1; i++) {
+                TreeLinkNode parentNode = parent.poll();
+                for (int k = 0; k < 2 && !level.isEmpty(); k++) {
+                    TreeLinkNode node = level.poll();
+                    if(k == 0) {
+                        parentNode.left = node;
+                    }else {
+                        parentNode.right = node;
+                    }
+                    parent.add(node);
+                }
+            }
+        }
+        return root;
+    }
+
+    private static int findHeight(int len) {
+        for (int i = 0; ; i++) {
+            if(Math.pow(2, i) > len) {
+                return i;
+            }
+        }
     }
 
 }

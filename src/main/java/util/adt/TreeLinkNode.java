@@ -2,12 +2,21 @@ package util.adt;
 
 public class TreeLinkNode {
 
-    public int val;
+    public Integer val;
 
     public TreeLinkNode left, right, next;
 
-    public TreeLinkNode(int x) {
+    public TreeLinkNode(Integer x) {
         val = x;
     }
 
+    @Override
+    public String toString() {
+        return "TreeLinkNode{" +
+                "val=" + val +
+                ", left=" + left +
+                ", right=" + right +
+                ", next=" + next +
+                '}';
+    }
 }
