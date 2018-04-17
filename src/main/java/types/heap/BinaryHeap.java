@@ -17,6 +17,20 @@ public class BinaryHeap<T extends Comparable> {
         this.elements = (T[]) Array.newInstance(Comparable.class, maxSize);
     }
 
+    public BinaryHeap(T[] arr) {
+        this.maxSize = arr.length + 1;
+        this.elements = (T[]) Array.newInstance(Comparable.class, maxSize);;
+        this.size = maxSize - 1;
+        System.arraycopy(arr, 0, elements, 1, arr.length);
+        heapify();
+    }
+
+    private void heapify() {
+        for (int i = maxSize / 2; i >= 1; i--) {
+            siftDown(i, elements[i]);
+        }
+    }
+
     public void insert(T item) {
         if(size + 1 > maxSize) {
             throw new IndexOutOfBoundsException();
@@ -27,14 +41,10 @@ public class BinaryHeap<T extends Comparable> {
 
     private void siftUp(int idx, T item) {
         int tmp = idx >> 1;
-        while(tmp >= 1) {
-            if(elements[tmp].compareTo(item) > 0) {
-                swap(elements, tmp, idx);
-                idx = tmp;
-                tmp >>= 1;
-            }else {
-                break;
-            }
+        while(tmp >= 1 && elements[tmp].compareTo(item) > 0) {
+            swap(elements, tmp, idx);
+            idx = tmp;
+            tmp >>= 1;
         }
     }
 
