@@ -1,14 +1,12 @@
 package types.string;
 
-import java.util.Arrays;
-
 public class PowerString {
 
     public String repeat(String text) {
         int[] next = getNext(text);
-        System.out.println(Arrays.toString(next));
-        int p = next[text.length() - 1];
-        if(text.length() % p == 0) {
+        int len = text.length();
+        int p = len - 1 - next[len - 1];
+        if(len % p == 0) {
             return text.substring(0, p);
         }
         return "";
@@ -23,11 +21,7 @@ public class PowerString {
             if(k == -1 || text.charAt(i) == text.charAt(k)) {
                 i++;
                 k++;
-                if(text.charAt(k) == text.charAt(i)) {
-                    rs[i] = rs[k];
-                }else {
-                    rs[i] = k;
-                }
+                rs[i] = k;
             }else {
                 k = rs[k];
             }
