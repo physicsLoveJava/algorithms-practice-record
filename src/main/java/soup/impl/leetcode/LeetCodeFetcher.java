@@ -33,14 +33,14 @@ public class LeetCodeFetcher implements UrlListFetcher {
 
     private void init() {
         String typeUrl = String.format(TEMPL, level.getLevel());
-        Document root = Jsoup.parse(ChromeUtil.getHtml(typeUrl, ".reactable-val", new ChromeUtil.WebAction() {
+        Document root = Jsoup.parse(ChromeUtil.getHtml(typeUrl, ".reactable-data", new ChromeUtil.WebAction() {
             public void invoke(WebDriver driver) {
                 WebElement selectElement = driver.findElement(By.cssSelector("#question-app .reactable-pagination > tr > td > span.row-selector > select"));
                 Select select = new Select(selectElement);
                 select.selectByIndex(3);
             }
         }));
-        Elements questions = root.select("#question-app tbody.reactable-val > tr > td:nth-child(3) > div > a");
+        Elements questions = root.select("#question-app tbody.reactable-data > tr > td:nth-child(3) > div > a");
         for (Element question : questions) {
             urlList.add(DOMAIN + question.attr("href"));
         }
