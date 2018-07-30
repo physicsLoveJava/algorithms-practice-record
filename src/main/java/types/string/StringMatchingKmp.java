@@ -6,9 +6,9 @@ public class StringMatchingKmp {
         if(text == null || pattern == null) {
             return -1;
         }
-        int j = 0;
+        int j = -1;
         int[] next = getNext(pattern);
-        int i = 0;
+        int i = -1;
         while(i <= text.length() - 1) {
             if(j == -1 || text.charAt(i) == pattern.charAt(j)) {
                 j++;
