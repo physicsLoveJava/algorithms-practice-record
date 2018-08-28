@@ -1,7 +1,5 @@
 package types.dp;
 
-import util.PrintUtils;
-
 import java.util.Arrays;
 
 public class LIS {
